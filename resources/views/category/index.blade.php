@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">{{ __('Locations') }}</div>
+                    <div class="card-header">{{ __('House Categories') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -18,7 +18,7 @@
                         @endif
 
                         <div class="d-grid gap-2 d-md-flex mb-3 mt-2 justify-content-md-end">
-                            <a href="{{route('locations.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i> New</a>
+                            <a href="{{route('categories.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i> New</a>
                         </div>
 
                         <table class="table table-bordered">
@@ -30,21 +30,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($locations as $location)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$location->name}}</td>
-                                <td class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                </td>
-                            </tr>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$category->name}}</td>
+                                    <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-2">
-                            {{ $locations->links() }}
-                        </div>
                     </div>
                 </div>
             </div>
