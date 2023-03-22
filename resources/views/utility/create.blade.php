@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">{{ __('Locations') }}</div>
+                    <div class="card-header">{{ __('utilities') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -18,15 +18,15 @@
                         @endif
 
                         <div class="mt-2 mb-2">
-                            <a class="btn btn-warning btn-sm" href="{{route('locations.index')}}"><i class="bi bi-arrow-left-circle"></i> Back</a>
+                            <a class="btn btn-warning btn-sm" href="{{route('utilities.index')}}"><i class="bi bi-arrow-left-circle"></i> Back</a>
                         </div>
                         <hr>
 
-                        <form method="POST" action="{{ route('locations.store') }}">
+                        <form method="POST" action="{{ route('utilities.store') }}">
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Location Name') }}</label>
+                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Utility Name') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>

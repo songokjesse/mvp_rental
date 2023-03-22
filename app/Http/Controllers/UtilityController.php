@@ -2,30 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
+use App\Models\Utility;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class UtilityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function index()
     {
-        $categories = Categories::all();
-        return view('category.index', compact('categories'));
-        //
+        $utilities = Utility::paginate(20);
+        return view('utility.index', compact('utilities'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function create()
     {
-        return view('category.create');
+        return view('utility.create');
     }
 
     /**
@@ -34,11 +30,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories',
+            'name' => 'required'
         ]);
-        Categories::create($request->all());
-        return redirect()->route('categories.index')
-            ->with('success','Category created successfully.');
+
+        Utility::create($request->all());
+        return redirect()->route('utilities.index')
+            ->with('success','Utility created successfully.');
     }
 
     /**

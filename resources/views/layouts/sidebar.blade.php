@@ -1,7 +1,7 @@
 <ul class="list-group">
-    <li class="list-group-item">House</li>
+    <a href="#" class="list-group-item">Houses</a>
     <a href="/categories" class="list-group-item">Categories</a>
     <a href="/locations" class="list-group-item">Locations</a>
-    <li class="list-group-item">Landlords</li>
-    <li class="list-group-item">Utilities</li>
+    <a href="/landlords" class="list-group-item">Landlords</a>
+    <a href="/utilities" class="list-group-item">Utilities</a>
 </ul>

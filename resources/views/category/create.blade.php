@@ -18,7 +18,7 @@
                         @endif
 
                         <div class="mt-2 mb-2">
-                            <a class="btn btn-warning btn-sm" href="{{route('categories.index')}}">Back</a>
+                            <a class="btn btn-warning btn-sm" href="{{route('categories.index')}}"><i class="bi bi-arrow-left-circle"></i> Back</a>
                         </div>
                         <hr>
 

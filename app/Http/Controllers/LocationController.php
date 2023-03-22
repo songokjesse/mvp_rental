@@ -14,7 +14,7 @@ class LocationController extends Controller
     //
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $locations = Location::paginate(2);
+        $locations = Location::paginate(10);
         return view('location.index',compact('locations'));
     }
 

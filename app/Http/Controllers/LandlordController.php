@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Landlord;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class LandlordController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $categories = Categories::all();
-        return view('category.index', compact('categories'));
-        //
+        $landlords = Landlord::paginate(20);
+        return view('landlord.index', compact('landlords'));
     }
 
     /**
@@ -25,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('category.create');
+        return view('landlord.create');
     }
 
     /**
@@ -33,12 +32,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|unique:categories',
-        ]);
-        Categories::create($request->all());
-        return redirect()->route('categories.index')
-            ->with('success','Category created successfully.');
+       $request->validate([
+           'name' => 'required',
+           'email' => 'required|unique:landlords|email',
+           'phone' => 'required|unique:landlords',
+       ]);
+
+       Landlord::create($request->all());
+       return redirect()->route('landlords.index')->with('success', 'Landlord created successfully.');
     }
 
     /**
