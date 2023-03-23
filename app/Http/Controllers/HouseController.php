@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\House;
+use App\Models\Landlord;
+use App\Models\Location;
+use App\Models\Utility;
 use Illuminate\Http\Request;
 
 class HouseController extends Controller
@@ -21,7 +25,11 @@ class HouseController extends Controller
      */
     public function create()
     {
-        //
+        $landlords = Landlord::all();
+        $categories = Categories::all();
+        $locations = Location::all();
+        $utilities = Utility::all();
+        return view('house.create', compact('landlords', 'locations', 'categories', 'utilities'));
     }
 
     /**
@@ -29,6 +37,7 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         //
     }
 
