@@ -22,7 +22,7 @@
                         </div>
 
                             <div class="mt-2">
-                                <h4>Add House Details</h4>
+                                <h4>Fill House Details</h4>
                             </div>
                         <hr>
 
@@ -121,7 +121,7 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-8">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary btn-sm">
                                         {{ __('Submit') }}
                                     </button>
                                 </div>
