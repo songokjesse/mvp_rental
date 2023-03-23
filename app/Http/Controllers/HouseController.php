@@ -37,8 +37,23 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        //
+       $request->validate([
+           'name' => 'required',
+           'price' => 'required',
+           'location_id' => 'required',
+           'category_id' => 'required',
+           'landlord_id' => 'required',
+       ]);
+
+       $house = new House();
+       $house->name = $request['name'];
+       $house->price = $request['price'];
+       $house->category_id = $request['category_id'];
+       $house->location_id = $request['location_id'];
+       $house->landlord_id = $request['landlord_id'];
+       $house->save();
+
+       return redirect()->route('houses.index')->with('success', 'House Added Successfully');
     }
 
     /**
