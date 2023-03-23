@@ -22,6 +22,7 @@ class HouseController extends Controller
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
             ->select(
+                'houses.id',
                 'houses.name',
                 'houses.price',
                 'locations.name as location_name',

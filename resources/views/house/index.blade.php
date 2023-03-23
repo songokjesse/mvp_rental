@@ -29,13 +29,13 @@
                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Location</th>
-                                    <th></th>
+{{--                                    <th></th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($houses as $house)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                    <td><a href="{{route('houses.show', $house->id)}}" class="btn btn-sm btn-outline-dark"> <i class="bi bi-eye"></i> </a></td>
                                     <td>{{$house->name}}</td>
                                     <td>{{$house->category_name}}</td>
                                     <td>Ksh {{$house->price}}</td>
