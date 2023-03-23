@@ -33,18 +33,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                <tr>--}}
-{{--                                    <td></td>--}}
-{{--                                    <td></td>--}}
-{{--                                    <td></td>--}}
-{{--                                    <td></td>--}}
-{{--                                    <td></td>--}}
-{{--                                </tr>--}}
+                                @foreach($houses as $house)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$house->name}}</td>
+                                    <td>{{$house->category_name}}</td>
+                                    <td>Ksh {{$house->price}}</td>
+                                    <td>{{$house->location_name}}</td>
+                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="mt-2">
-{{--                            {{ $locations->links() }}--}}
+                            {{ $houses->links() }}
                         </div>
                     </div>
                 </div>
