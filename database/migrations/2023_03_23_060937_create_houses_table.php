@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('price');
             $table->string('name');
+            $table->boolean('verified')->default(false);
+            $table->boolean('published')->default(false);
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('landlord_id');
