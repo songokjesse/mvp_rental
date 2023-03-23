@@ -21,7 +21,8 @@
                             <a href="{{route('landlords.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i> New</a>
                         </div>
 
-                        <table class="table table-bordered">
+                        <div class="table-responsive-sm">
+                            <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -46,6 +47,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        </div>
                             <div class="mt-2">
                                 {{ $landlords->links() }}
                             </div>
