@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\HouseImageController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\UtilityController;
@@ -33,5 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('utilities' , UtilityController::class);
     Route::resource('landlords' , LandlordController::class);
     Route::resource('houses' , HouseController::class);
+
+    Route::get('/house/{id}/images', [HouseImageController::class, 'index'])->name('house_images');
+    Route::get('/house/{id}/images_upload', [HouseImageController::class, 'upload'])->name('house_images_upload');
 });
 

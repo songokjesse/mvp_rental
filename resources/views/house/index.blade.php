@@ -37,7 +37,7 @@
                                 <tr>
                                     <td>
                                         <a href="{{route('houses.show', $house->id)}}" class="btn btn-sm btn-outline-dark"> <i class="bi bi-eye"></i> </a>
-                                        <a href="#" class="btn btn-sm btn-outline-dark"><i class="bi bi-images"></i></a>
+                                        <a href="{{route('house_images', $house->id)}}" class="btn btn-sm btn-outline-dark"><i class="bi bi-images"></i></a>
                                     </td>
                                     <td>{{$house->name}}</td>
                                     <td>{{$house->category_name}}</td>
