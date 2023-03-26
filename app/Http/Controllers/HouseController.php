@@ -84,7 +84,29 @@ class HouseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $houses = DB::table('houses')
+            ->join('locations', 'houses.location_id', '=', 'locations.id')
+            ->join('categories', 'houses.category_id', '=', 'categories.id')
+            ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
+            ->select(
+                'houses.id',
+                'houses.name',
+                'houses.price',
+                'locations.name as location_name',
+                'categories.name as category_name',
+                'landlords.name as landlords_name',
+                'landlords.phone as landlords_phone',
+                'landlords.email as landlords_email',
+            )
+            ->where('houses.id', '=', $id)
+            ->get();
+
+        $utilities = DB::table('utilities')
+            ->join('houses_utilities', 'utilities.id', '=', 'houses_utilities.utility_id')
+            ->where('houses_utilities.house_id', '=', $id)
+            ->select('utilities.name')
+            ->get();
+        return view('house.show', compact('houses', 'utilities'));
     }
 
     /**
