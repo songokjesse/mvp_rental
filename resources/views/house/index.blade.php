@@ -21,7 +21,7 @@
                             <a href="{{route('houses.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i> New</a>
                         </div>
                         <div class="table-responsive-sm">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-striped table-sm">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -35,7 +35,10 @@
                                 <tbody>
                                 @foreach($houses as $house)
                                 <tr>
-                                    <td><a href="{{route('houses.show', $house->id)}}" class="btn btn-sm btn-outline-dark"> <i class="bi bi-eye"></i> </a></td>
+                                    <td>
+                                        <a href="{{route('houses.show', $house->id)}}" class="btn btn-sm btn-outline-dark"> <i class="bi bi-eye"></i> </a>
+                                        <a href="#" class="btn btn-sm btn-outline-dark"><i class="bi bi-images"></i></a>
+                                    </td>
                                     <td>{{$house->name}}</td>
                                     <td>{{$house->category_name}}</td>
                                     <td>Ksh {{$house->price}}</td>

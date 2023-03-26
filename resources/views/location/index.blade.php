@@ -21,7 +21,7 @@
                             <a href="{{route('locations.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i> New</a>
                         </div>
                         <div class="table-responsive-sm">
-                             <table class="table table-bordered">
+                             <table class="table table-bordered table-striped table-responsive-sm">
                                 <thead>
                                 <tr>
                                     <th>#</th>
