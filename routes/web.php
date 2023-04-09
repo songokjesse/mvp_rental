@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $properties = \App\Models\House::all();
+    return view('welcome', compact('properties'));
 });
 
 Auth::routes();
