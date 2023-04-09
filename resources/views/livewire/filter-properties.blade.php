@@ -19,7 +19,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input wire:model.debounce.500ms="price" type="number" class="form-control" id="price">
+                <input wire:model.debounce.500ms="price" type="number" class="form-control" id="price" placeholder="Price">
             </div>
         </div>
     </form>
