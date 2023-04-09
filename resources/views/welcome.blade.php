@@ -23,9 +23,6 @@
     <main class="py-4" >
         <div class="px-4 pt-2 text-center border-bottom" >
             <h1 class="display-4 fw-bold">Eldoret Market Place</h1>
-            <div class="col-lg-6 mx-auto">
-
-            </div>
         </div>
 
         <div class="mt-3">

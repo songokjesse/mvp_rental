@@ -25,7 +25,7 @@
                             <h4>Upload House Images</h4>
                         </div>
                         <hr class="mb-2">
-                            @livewire('house-upload-image')
+                            @livewire('house-upload-image',  ['house_id' => $house_id])
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@
                 @else
                         <div class="card h-100 border-warning ">
                 @endif
-                    <a href="#">
+                    <a href="{{route( 'house_details', $property->id)}}">
                     <img src="{{ $property->image_url ?? 'https://placehold.co/400x200/grey/white' }}" class="card-img-top" alt="Property Image">
                     </a>
                     <div class="card-body">

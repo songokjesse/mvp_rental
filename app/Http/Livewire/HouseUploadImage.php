@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Image;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -12,20 +13,22 @@ class HouseUploadImage extends Component
 {
     use WithFileUploads;
     public $photo;
+    public $house_id;
 
-    public function updatedPhoto()
-    {
-        $this->validate([
-            'photo' => 'image|max:1024',
-        ]);
-    }
 
     public function save()
     {
-        $this->validate([
+        $validatedData = $this->validate([
             'photo' => 'image|max:1024', // 1MB Max
         ]);
-        $this->$photo->store('photos');
+        $filename = $validatedData['photo']->store('uploads', 'public');
+
+         $images = new Image();
+         $images->name = $filename;
+         $images->house_id = $this->house_id;
+         $images->save();
+
+        session()->flash('success', 'Image uploaded successfully.');
     }
 
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application

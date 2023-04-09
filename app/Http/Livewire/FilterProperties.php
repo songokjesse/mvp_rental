@@ -33,7 +33,7 @@ class FilterProperties extends Component
             })
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
-            ->select('houses.name', 'locations.name as location_name', 'categories.name as category_name', 'houses.price', 'houses.verified')
+            ->select('houses.id','houses.name', 'locations.name as location_name', 'categories.name as category_name', 'houses.price', 'houses.verified')
             ->orderBy('houses.created_at', 'desc')
             ->paginate(9);
 
