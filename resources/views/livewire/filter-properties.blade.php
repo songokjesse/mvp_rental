@@ -1,6 +1,6 @@
 <div>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-    <form>
+    <form >
         <div class="row g-3">
             <div class="col-md-4">
                 <select wire:model="property_type_id" id="propertyType" class="form-select">
@@ -19,7 +19,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input wire:model.debounce.500ms="price" type="number" class="form-control" id="price" placeholder="Price">
+                <input wire:model.debounce.500ms="price" type="number" class="form-control" id="price" placeholder="Price in Ksh">
             </div>
         </div>
     </form>
@@ -30,12 +30,37 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($properties as $property)
             <div class="col">
-                <div class="card h-100">
-                    <img src="{{ $property->image_url }}" class="card-img-top" alt="Property Image">
+                @if($property->verified === 1)
+                    <div class="card h-100 border-success ">
+                @else
+                        <div class="card h-100 border-warning ">
+                @endif
+                    <a href="#">
+                    <img src="{{ $property->image_url ?? 'https://placehold.co/400x200/grey/white' }}" class="card-img-top" alt="Property Image">
+                    </a>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $property->location }}</h5>
-                        <p class="card-text">{{ $property->property_type }}</p>
-                        <p class="card-text">{{ $property->price }}</p>
+                        <div class="row justify-content-between">
+                            <div class="col-7">
+                                <h5 class="card-title"><i class="bi bi-globe-europe-africa"></i> {{ $property->location_name }}</h5>
+                            </div>
+                            <div class="col-4">
+                            @if($property->verified === 1)
+                                    <span class="badge text-bg-success"> <i class="bi bi-award"></i> Verified  </span>
+                                @else
+                                    <span class="badge text-bg-warning"> <i class="bi bi-shield-exclamation"></i> Not Verified  </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-7">
+                                <p class="card-text">
+                                    <i class="bi bi-building-gear"></i> {{ $property->category_name }}</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="card-text"><i class="bi bi-cash-stack"></i> Ksh: {{ $property->price }}</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
