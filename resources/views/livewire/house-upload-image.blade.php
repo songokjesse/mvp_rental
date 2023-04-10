@@ -3,7 +3,7 @@
 @endif
 <div class="mt-3">
     {{-- The best athlete wants his opponent at his best. --}}
-    <form wire:submit.prevent="save" class="form" >
+    <form wire:submit.prevent="save" class="form" enctype="multipart/form-data">
         @if ($photo)
             Image Preview:
                 <img src="{{ $photo->temporaryUrl() }}" class="mt-3 mb-3">
