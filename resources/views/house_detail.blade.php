@@ -38,8 +38,8 @@
                     <div class="carousel-inner">
                         @foreach ($images as $key => $image)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                         <img src="{{ asset($image->name) ?? 'https://res.cloudinary.com/homework-support-com/image/upload/v1681149100/cvlpgqqdolmqkupixmhh.jpg' }}" class="d-block w-100" alt="{{ $house->name }}">
-{{--                                <img src="https://placehold.co/600x400/grey/white" class="d-block w-100" alt="{{ $house->name }}">--}}
+{{--                         <img src="{{ asset($image->name) ?? 'https://res.cloudinary.com/homework-support-com/image/upload/v1681149100/cvlpgqqdolmqkupixmhh.jpg' }}" class="d-block w-100" alt="{{ $house->name }}">--}}
+                                <img src="https://res.cloudinary.com/homework-support-com/image/upload/v1681149100/cvlpgqqdolmqkupixmhh.jpg" class="d-block w-100" alt="{{ $house->name }}">
                             </div>
                         @endforeach
                     </div>
