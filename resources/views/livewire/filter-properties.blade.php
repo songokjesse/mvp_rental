@@ -35,8 +35,9 @@
                 @else
                         <div class="card h-100 border-warning ">
                 @endif
+
                     <a href="{{route( 'house_details', $property->id)}}">
-                    <img src="{{ $property->image_url ?? 'https://placehold.co/400x200/grey/white' }}" class="card-img-top" alt="Property Image">
+                    <img src="{{ $property->image_url ?? 'https://res.cloudinary.com/homework-support-com/image/upload/v1681149100/cvlpgqqdolmqkupixmhh.jpg' }}" class="card-img-top" alt="Property Image" height="150" width="100">
                     </a>
                     <div class="card-body">
                         <div class="row justify-content-between">
