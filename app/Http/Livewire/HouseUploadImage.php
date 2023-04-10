@@ -19,7 +19,7 @@ class HouseUploadImage extends Component
     public function save()
     {
         $validatedData = $this->validate([
-            'photo' => 'image|max:1024', // 1MB Max
+            'photo' => 'image|max:1024|mimes:jpeg,png,jpg', // 1MB Max
         ]);
         $filename = $validatedData['photo']->store('uploads', 'public');
 
