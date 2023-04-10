@@ -26,9 +26,8 @@
         </div>
     <div class="row mt-3">
         <div class="col-md-8">
-{{--            {{dd($images)}}--}}
             @if($images->isEmpty())
-                <img src="https://placehold.co/600x400/grey/white" class="d-block w-100" alt="{{ $house->name }}">
+                <img src="https://placehold.co/400x200/grey/white" class="d-block w-100" alt="{{ $house->name }}">
             @else
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -39,7 +38,7 @@
                     <div class="carousel-inner">
                         @foreach ($images as $key => $image)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                                            <img src="{{ asset($image->name) ?? 'https://placehold.co/600x400/grey/white' }}" class="d-block w-100" alt="{{ $house->name }}">
+{{--                                                            <img src="{{ asset($image->name) ?? 'https://placehold.co/600x400/grey/white' }}" class="d-block w-100" alt="{{ $house->name }}">--}}
                                 <img src="https://placehold.co/600x400/grey/white" class="d-block w-100" alt="{{ $house->name }}">
                             </div>
                         @endforeach

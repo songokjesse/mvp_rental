@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/house/{id}/images', [HouseImageController::class, 'index'])->name('house_images');
     Route::get('/house/images_upload/{id}', [HouseImageController::class, 'upload'])->name('house_images_upload');
-    Route::get('/house_details/{id}', [HouseDetailController::class, 'show'])->name('house_details');
 });
+
+Route::get('/house_details/{id}', [HouseDetailController::class, 'show'])->name('house_details');
 
