@@ -23,7 +23,7 @@ class FilterProperties extends Component
         $properties = $this->filteredProperties();
 
         $properties = House::when($this->location_id, function ($query, $location_id) {
-            return $query->where('location_id', 'like', '%' . $location_id . '%');
+            return $query->where('location_id',  $location_id);
         })
             ->when($this->price, function ($query, $price) {
                 return $query->where('price', '<=', $price);
