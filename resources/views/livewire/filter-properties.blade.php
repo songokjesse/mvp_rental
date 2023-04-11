@@ -31,7 +31,7 @@
         @foreach($properties as $property)
             <a href="{{route( 'house_details', $property->id)}}" class="text-black ">
             <div class="col">
-                @if($property->verified === 1)
+                @if($property->verified == "1")
                     <div class="card h-100 border-success ">
                 @else
                         <div class="card h-100 border-warning ">
@@ -44,7 +44,7 @@
                                 <h5 class="card-title"><i class="bi bi-globe-europe-africa"></i> {{ $property->location_name }}</h5>
                             </div>
                             <div class="col-4">
-                            @if($property->verified === 1)
+                            @if($property->verified == "1")
                                     <span class="badge text-bg-success"> <i class="bi bi-award"></i> Verified  </span>
                                 @else
                                     <span class="badge text-bg-warning"> <i class="bi bi-shield-exclamation"></i> Not Verified  </span>
