@@ -61,7 +61,7 @@
             <ul class="list-group">
             <li class="list-group-item"> <strong>Location:</strong> {{ $house->location_name }} </li>
             <li class="list-group-item"> <strong>Property Type:</strong> {{ $house->category_name }} </li>
-            <li class="list-group-item"> <strong>Price:</strong> {{ $house->price }} </li>
+            <li class="list-group-item"> <strong>Price:</strong> Ksh {{ $house->price }} </li>
             </ul>
             <div class="mt-4">
                 <h3>Landlord/Agent Details</h3>
