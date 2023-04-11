@@ -54,7 +54,6 @@
                 </div>
             @endif
 
-
         </div>
         <div class="col-md-4">
             <h3>Property Details</h3>

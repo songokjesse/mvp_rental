@@ -54,7 +54,7 @@
                         <div class="row justify-content-between">
                             <div class="col-7">
                                 <p class="card-text">
-                                    <i class="bi bi-building-gear"></i> {{ $property->category_name }}</p>
+                                    <i class="bi bi-house-door"></i> {{ $property->category_name }}</p>
                             </div>
                             <div class="col-5 text-end">
                                 <p class="card-text"><i class="bi bi-cash-stack"></i> Ksh: {{ $property->price }}</p>
