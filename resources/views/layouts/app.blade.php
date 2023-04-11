@@ -81,6 +81,7 @@
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-envelope-at"></i></a></li>
                 <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
                 <li class="ms-3"><a class="text-muted" href="#"></a><i class="bi bi-twitter"></i></li>
             </ul>
