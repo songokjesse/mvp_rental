@@ -29,6 +29,7 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($properties as $property)
+            <a href="{{route( 'house_details', $property->id)}}">
             <div class="col">
                 @if($property->verified === 1)
                     <div class="card h-100 border-success ">
@@ -36,9 +37,7 @@
                         <div class="card h-100 border-warning ">
                 @endif
 
-                    <a href="{{route( 'house_details', $property->id)}}">
                     <img src="{{ $property->image_url ?? 'https://res.cloudinary.com/homework-support-com/image/upload/v1681149100/cvlpgqqdolmqkupixmhh.jpg' }}" class="card-img-top" alt="Property Image" height="150" width="100">
-                    </a>
                     <div class="card-body">
                         <div class="row justify-content-between">
                             <div class="col-7">
@@ -65,6 +64,7 @@
                     </div>
                 </div>
             </div>
+            </a>
         @endforeach
     </div>
     <div class="mt-3">
