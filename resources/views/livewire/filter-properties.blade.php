@@ -56,7 +56,7 @@
                                 <p class="card-text">
                                     <i class="bi bi-building-gear"></i> {{ $property->category_name }}</p>
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 <p class="card-text"><i class="bi bi-cash-stack"></i> Ksh: {{ $property->price }}</p>
                             </div>
                         </div>
