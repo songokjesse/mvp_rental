@@ -29,7 +29,7 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($properties as $property)
-            <a href="{{route( 'house_details', $property->id)}}">
+            <a href="{{route( 'house_details', $property->id)}}" class="text-black ">
             <div class="col">
                 @if($property->verified === 1)
                     <div class="card h-100 border-success ">
