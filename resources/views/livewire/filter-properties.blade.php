@@ -41,7 +41,9 @@
                     <div class="card-body">
                         <div class="row justify-content-between">
                             <div class="col-7">
-                                <h5 class="card-title"><i class="bi bi-globe-europe-africa"></i> {{ $property->location_name }}</h5>
+                                <h5 class="card-title">
+                                    <span class="badge text-bg-light">    <i class="bi bi-globe-europe-africa"></i> {{ $property->location_name }} </span>
+                                </h5>
                             </div>
                             <div class="col-4">
                             @if($property->verified == "1")
@@ -54,10 +56,13 @@
                         <div class="row justify-content-between">
                             <div class="col-7">
                                 <p class="card-text">
-                                    <i class="bi bi-house-door"></i> {{ $property->category_name }}</p>
+                                    <span class="badge text-bg-light">  <i class="bi bi-house-door"></i> {{ $property->category_name }} </span>
+                                </p>
                             </div>
                             <div class="col-5 text-end">
-                                <p class="card-text"><i class="bi bi-cash-stack"></i> Ksh: {{ $property->price }}</p>
+                                <p class="card-text">
+                                    <span class="badge text-bg-light"> <i class="bi bi-cash-stack"></i> Ksh: {{ $property->price }} </span>
+                                </p>
                             </div>
                         </div>
 
