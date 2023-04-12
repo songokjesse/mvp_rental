@@ -37,7 +37,7 @@
                         <div class="card h-100 border-warning ">
                 @endif
                 @if($property->image_name)
-                    <img src="{{ asset('storage/'. $property->image_name) ?? 'https://res.cloudinary.com/homework-support-com/image/upload/v1681148696/ctvdsg71vds0vsku3wwy.jpg' }}" class="card-img-top" alt="Property Image" height="150" width="100">
+                    <img src="{{ asset('storage/'. $property->image_name) }}" class="card-img-top" alt="Property Image" height="150" width="100">
                             @else
                     <img src="{{ 'https://res.cloudinary.com/homework-support-com/image/upload/v1681148696/ctvdsg71vds0vsku3wwy.jpg' }}" class="card-img-top" alt="Property Image" height="150" width="100">
                             @endif
