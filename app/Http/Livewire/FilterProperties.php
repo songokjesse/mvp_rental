@@ -33,7 +33,11 @@ class FilterProperties extends Component
             })
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
-            ->select('houses.id','houses.name', 'locations.name as location_name', 'categories.name as category_name', 'houses.price', 'houses.verified')
+            ->leftJoin('images', function ($join) {
+                $join->on('images.house_id', '=', 'houses.id')
+                    ->where('images.is_primary', '=', true);
+            })
+            ->select('houses.id','houses.name', 'locations.name as location_name', 'categories.name as category_name', 'houses.price', 'houses.verified', 'images.name AS image_name')
             ->orderBy('houses.created_at', 'desc')
             ->paginate(9);
 
