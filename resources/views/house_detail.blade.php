@@ -61,7 +61,7 @@
             <li class="list-group-item"> <strong>Location:</strong> {{ $house->location_name }} </li>
             <li class="list-group-item"> <strong>Property Type:</strong> {{ $house->category_name }} </li>
                 <li class="list-group-item"> <strong>Price:(PM)</strong> Ksh {{ $house->price }}  </li>
-                <li class="list-group-item"> <strong>Deposit:</strong> Ksh {{ 2*($house->price) }}  </li>
+                <li class="list-group-item"> <strong>Deposit:</strong> Ksh {{ $house->price }}  </li>
             </ul>
             <div class="mt-4">
                 <h3>Landlord/Agent Details</h3>
