@@ -21,12 +21,14 @@ class HouseController extends Controller
         $houses = DB::table('houses')
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
+            ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
             ->select(
                 'houses.id',
                 'houses.name',
                 'houses.price',
                 'locations.name as location_name',
                 'categories.name as category_name',
+                'landlords.name as landlord_name',
             )
             ->paginate(20);
         return view('house.index', compact('houses'));
@@ -112,17 +114,71 @@ class HouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(House $house)
     {
-        //
+        $locations = Location::all();
+        $categories = Categories::all();
+        $landlords = Landlord::all();
+        $utilities = Utility::all();
+
+        return view('house.edit', [
+            'house' => $house,
+            'locations' => $locations,
+            'categories' => $categories,
+            'landlords' => $landlords,
+            'utilities' => $utilities
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, House $house)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'location_id' => 'required|exists:locations,id',
+            'category_id' => 'required|exists:categories,id',
+            'landlord_id' => 'required|exists:landlords,id',
+        ], [
+            'name.required' => 'The title field is required.',
+            'name.max' => 'The title field may not be greater than 255 characters.',
+            'price.required' => 'The price field is required.',
+            'price.numeric' => 'The price field must be a number.',
+            'location_id.required' => 'The location field is required.',
+            'location_id.exists' => 'The selected location is invalid.',
+            'category_id.required' => 'The category field is required.',
+            'category_id.exists' => 'The selected category is invalid.',
+            'landlord_id.required' => 'The Landlord field is required.',
+            'landlord_id.exists' => 'The selected Landlord is invalid.',
+        ]);
+
+        $house->update($request->only([
+            'name',
+            'price',
+            'location_id',
+            'category_id',
+            'landlord_id',
+        ]));
+
+        $house->name = $request->input('name');
+        $house->price = $request->input('price');
+
+        // Update the property's location and category
+        $house->location_id = $request->input('location_id');
+        $house->category_id = $request->input('category_id');
+        $house->landlord_id = $request->input('landlord_id');
+
+        $house->save();
+
+        // Update the property's utilities
+        $utilities = $request->input('utilities', []);
+        $house->utilities()->sync($utilities);
+
+
+        return redirect()->route('houses.show', $house->id);
     }
 
     /**

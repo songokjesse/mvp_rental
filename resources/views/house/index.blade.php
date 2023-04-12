@@ -29,7 +29,8 @@
                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Location</th>
-{{--                                    <th></th>--}}
+                                    <th>Landlord/Agent</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,10 @@
                                     <td>{{$house->category_name}}</td>
                                     <td>Ksh {{$house->price}}</td>
                                     <td>{{$house->location_name}}</td>
+                                    <td>{{$house->landlord_name}}</td>
+                                    <td>
+                                        <a  href="{{route('houses.edit', $house->id)}}" class="btn btn-secondary btn-sm">Edit</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
