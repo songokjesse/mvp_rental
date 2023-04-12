@@ -6,9 +6,9 @@ use App\Models\Image;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
 class HouseUploadImage extends Component
 {
     use WithFileUploads;
@@ -21,8 +21,8 @@ class HouseUploadImage extends Component
         $validatedData = $this->validate([
             'photo' => 'image|max:1024|mimes:jpeg,png,jpg', // 1MB Max
         ]);
-        $filename = $validatedData['photo']->store('uploads', 'public');
 
+        $filename =  $validatedData['photo']->store('uploads', 'public');
          $images = new Image();
          $images->name = $filename;
          $images->house_id = $this->house_id;
@@ -35,6 +35,8 @@ class HouseUploadImage extends Component
     {
         return view('livewire.house-upload-image');
     }
+
+
 
 
 }
