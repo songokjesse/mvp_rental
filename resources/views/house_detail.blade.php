@@ -43,7 +43,11 @@
                             @foreach ($images as $key => $image)
                                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                     <img
-                                        src="{{ asset('storage/'.$image->name) ?? 'https://placehold.co/400x200/grey/white' }}"
+                                        @if($image->name)
+                                            src="{{ asset('storage/'.$image->name)}}"
+                                        @else
+                                            src="https://res.cloudinary.com/homework-support-com/image/upload/v1681148696/ctvdsg71vds0vsku3wwy.jpg"
+                                        @endif
                                         class="d-block w-100" alt="{{ $house->name }}">
                                 </div>
                             @endforeach
