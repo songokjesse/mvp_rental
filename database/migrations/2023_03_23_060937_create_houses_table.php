@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->boolean('verified')->default(false);
             $table->boolean('published')->default(false);
+            $table->boolean('is_featured')->default(false);
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('landlord_id');
