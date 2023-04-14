@@ -15,6 +15,7 @@ class FilterProperties extends Component
     public $price;
     public $location_id;
     public $property_type_id;
+    public $verified;
 
     public function render()
     {
@@ -24,13 +25,17 @@ class FilterProperties extends Component
 
         $properties = House::when($this->location_id, function ($query, $location_id) {
             return $query->where('location_id',  $location_id);
-        })
+            })
             ->when($this->price, function ($query, $price) {
                 return $query->where('price', '<=', $price);
             })
             ->when($this->property_type_id, function ($query, $property_type_id) {
                 return $query->where('category_id', $property_type_id);
             })
+            ->when($this->verified, function ($query, $verified) {
+                return $query->where('verified', $verified);
+            })
+
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
             ->leftJoin('images', function ($join) {

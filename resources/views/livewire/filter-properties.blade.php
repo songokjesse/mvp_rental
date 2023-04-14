@@ -2,7 +2,7 @@
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
     <form >
         <div class="row g-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select wire:model="property_type_id" id="propertyType" class="form-select">
                     <option value="">Select Category...</option>
                     @foreach ($propertyTypes as $propertyType)
@@ -10,7 +10,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select wire:model="location_id" id="location" class="form-select">
                     <option value="">Select location...</option>
                     @foreach ($locations as $location)
@@ -18,9 +18,16 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <input wire:model.debounce.500ms="price" type="number" class="form-control" id="price" placeholder="Price in Ksh">
             </div>
+            <div class="form-check col-md-3">
+                <input class="form-check-input" type="checkbox" wire:model="verified" class="form-control">
+                <label class="form-check-label" for="verified">
+                    Verified properties only
+                </label>
+            </div>
+
         </div>
     </form>
     </div>
