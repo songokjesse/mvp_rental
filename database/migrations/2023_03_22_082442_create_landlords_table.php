@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('landlords', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
             $table->string('phone');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

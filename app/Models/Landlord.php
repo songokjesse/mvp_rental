@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Landlord extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'phone'];
+    protected $fillable = ['phone', 'user_id'];
 }

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Landlord;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LandlordController extends Controller
 {
@@ -15,7 +18,9 @@ class LandlordController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $landlords = Landlord::paginate(20);
+        $landlords = DB::table('landlords')
+            ->join('users', 'landlords.user_id', '=', 'users.id')
+        ->paginate(20);
         return view('landlord.index', compact('landlords'));
     }
 
@@ -34,11 +39,22 @@ class LandlordController extends Controller
     {
        $request->validate([
            'name' => 'required',
-           'email' => 'required|unique:landlords|email',
+           'email' => 'required|unique:users|email',
+           'password' => ['required', 'string', 'min:8', 'confirmed'],
            'phone' => 'required|unique:landlords',
        ]);
 
-       Landlord::create($request->all());
+       $user = new User;
+       $user->name = $request->name;
+       $user->email = $request->email;
+       $user->password =  Hash::make($request->password);
+       $user->save();
+
+       Landlord::create([
+           'phone' => $request->phone,
+           'user_id' => $user->id,
+       ]);
+
        return redirect()->route('landlords.index')->with('success', 'Landlord created successfully.');
     }
 

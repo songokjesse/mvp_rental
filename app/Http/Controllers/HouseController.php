@@ -9,6 +9,7 @@ use App\Models\Location;
 use App\Models\Utility;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HouseController extends Controller
@@ -31,6 +32,36 @@ class HouseController extends Controller
                 'landlords.name as landlord_name',
             )
             ->paginate(20);
+//        if (Auth::user()->isAdmin()) {
+//            $houses = DB::table('houses')
+//                ->join('locations', 'houses.location_id', '=', 'locations.id')
+//                ->join('categories', 'houses.category_id', '=', 'categories.id')
+//                ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
+//                ->select(
+//                    'houses.id',
+//                    'houses.name',
+//                    'houses.price',
+//                    'locations.name as location_name',
+//                    'categories.name as category_name',
+//                    'landlords.name as landlord_name',
+//                )
+//                ->paginate(20);
+//        } else {
+//            $houses = DB::table('houses')
+//                ->join('locations', 'houses.location_id', '=', 'locations.id')
+//                ->join('categories', 'houses.category_id', '=', 'categories.id')
+//                ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
+//                ->where('')
+//                ->select(
+//                    'houses.id',
+//                    'houses.name',
+//                    'houses.price',
+//                    'locations.name as location_name',
+//                    'categories.name as category_name',
+//                    'landlords.name as landlord_name',
+//                )
+//                ->paginate(20);
+//        }
         return view('house.index', compact('houses'));
     }
 
