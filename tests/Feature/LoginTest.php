@@ -2,6 +2,7 @@
 
 use App\Models\User;
 
+
 it('has login page', function () {
     $response = $this->get('/login');
 
