@@ -78,9 +78,9 @@
                 <div class="mt-4">
                     <h3>Landlord/Agent Details</h3>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Name:</strong> {{ $house->landlord_name }} </li>
-                        <li class="list-group-item"><strong>Email:</strong> {{ $house->landlord_email }}</li>
-                        <li class="list-group-item"><strong>Phone:</strong> {{ $house->landlord_phone}}</li>
+                        <li class="list-group-item"><strong>Name:</strong> {{ $landlord->name }} </li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ $landlord->email }}</li>
+                        <li class="list-group-item"><strong>Phone:</strong> {{ $landlord->phone}}</li>
                     </ul>
                 </div>
                 <div class="mt-4">

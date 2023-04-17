@@ -19,14 +19,17 @@ class HouseDetailController extends Controller
             ->select(
                 'houses.name',
                 'houses.id',
+                'houses.landlord_id',
                 'locations.name as location_name',
                 'categories.name as category_name',
-                'landlords.name as landlord_name',
-                'landlords.email as landlord_email',
-                'landlords.phone as landlord_phone',
                 'houses.price',
                 'houses.verified')
             ->where('houses.id', '=', $id)
+            ->first();
+        $landlord = DB::table('landlords')
+            ->join('users', 'landlords.user_id', '=', 'users.id')
+            ->where('landlords.id', '=', $house->landlord_id)
+            ->select('landlords.phone', 'users.name', 'users.email')
             ->first();
         $utilities = DB::table('houses_utilities')
             ->join('utilities', 'houses_utilities.utility_id', '=','utilities.id' )
@@ -36,7 +39,6 @@ class HouseDetailController extends Controller
         $images = DB::table('images')
             ->where('house_id', '=', $id)
             ->get();
-//        dd([$house,$utilities,$images]);
-        return view('house_detail', compact('house','utilities', 'images'));
+        return view('house_detail', compact('house','utilities', 'images', 'landlord'));
     }
 }
