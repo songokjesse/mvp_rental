@@ -22,7 +22,7 @@
 <div id="app" >
     <main class="py-4" >
         <div class="px-4 pt-2 text-center border-bottom" >
-            <img  src="https://res.cloudinary.com/homework-support-com/image/upload/v1681715670/Eldoret_-Rentals_edjsxj.png" width="964" />
+            <img  src="https://res.cloudinary.com/homework-support-com/image/upload/v1681715670/Eldoret_-Rentals_edjsxj.png" width="964" class="img-fluid"/>
 {{--            <h1 class="display-4 fw-bold">Eldoret Rentals</h1>--}}
         </div>
 
