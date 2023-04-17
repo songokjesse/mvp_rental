@@ -21,12 +21,12 @@
 <body>
 <div id="app" >
     <main class="py-4" >
-        <div class="px-4 pt-2 text-center border-bottom" >
+        <div class="px-4 pt-2 text-center " >
             <a href="/"><img  src="https://res.cloudinary.com/homework-support-com/image/upload/v1681715670/Eldoret_-Rentals_edjsxj.png" width="500" class="img-fluid"/></a>
 {{--            <h1 class="display-4 fw-bold">Eldoret Rentals</h1>--}}
         </div>
 
-        <div class="mt-3">
+        <div class="mt-4">
             @livewire('property-filter')
         </div>
     </main>

@@ -22,10 +22,10 @@
 <body>
 <div id="app">
     <main class="py-4 container">
-        <div class="px-4 pt-2 text-center border-bottom">
+        <div class="px-4 pt-2 text-center">
             <a href="/"><img  src="https://res.cloudinary.com/homework-support-com/image/upload/v1681715670/Eldoret_-Rentals_edjsxj.png"  width="500" class="img-fluid"/></a>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-md-8">
                 @if($images->isEmpty())
                     <img src="https://placehold.co/400x200/grey/white" class="d-block w-100" alt="{{ $house->name }}">
