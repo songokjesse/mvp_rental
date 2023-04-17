@@ -25,8 +25,16 @@ class House extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function user(): BelongsTo
+    public function landlord(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Landlord::class);
+    }
+     public function location(): BelongsTo
+     {
+        return $this->belongsTo(Location::class);
+    }
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Categories::class);
     }
 }

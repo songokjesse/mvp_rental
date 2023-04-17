@@ -41,10 +41,10 @@
                                         <a href="{{route('house_images', $house->id)}}" class="btn btn-sm btn-outline-dark"><i class="bi bi-images"></i></a>
                                     </td>
                                     <td>{{$house->name}}</td>
-                                    <td>{{$house->category_name}}</td>
+                                    <td>{{$house->category->name}}</td>
                                     <td>Ksh {{$house->price}}</td>
-                                    <td>{{$house->location_name}}</td>
-                                    <td>{{$house->landlord_name}}</td>
+                                    <td>{{$house->location->name}}</td>
+                                    <td>{{$house->landlord->user->name}}</td>
                                     <td>
                                         <a  href="{{route('houses.edit', $house->id)}}" class="btn btn-secondary btn-sm">Edit</a>
                                     </td>

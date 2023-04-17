@@ -32,10 +32,10 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{{$houses[0]->name}}</td>
-                                <td> Ksh {{$houses[0]->price}}</td>
-                                <td>{{$houses[0]->category_name}}</td>
-                                <td>{{$houses[0]->location_name}}</td>
+                                <td>{{$houses->name}}</td>
+                                <td> Ksh {{$houses->price}}</td>
+                                <td>{{$houses->category_name}}</td>
+                                <td>{{$houses->location_name}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -51,9 +51,9 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{{$houses[0]->landlords_name}}</td>
-                                <td>{{$houses[0]->landlords_phone}}</td>
-                                <td>{{$houses[0]->landlords_email}}</td>
+                                <td>{{$landlord->name}}</td>
+                                <td>{{$landlord->phone}}</td>
+                                <td>{{$landlord->email}}</td>
                             </tr>
                             </tbody>
                         </table>

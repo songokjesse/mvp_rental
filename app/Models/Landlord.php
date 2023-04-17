@@ -9,4 +9,9 @@ class Landlord extends Model
 {
     use HasFactory;
     protected $fillable = ['phone', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

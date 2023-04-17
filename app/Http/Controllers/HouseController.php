@@ -8,6 +8,7 @@ use App\Models\Landlord;
 use App\Models\Location;
 use App\Models\Utility;
 use Carbon\Carbon;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,49 +20,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        $houses = DB::table('houses')
-            ->join('locations', 'houses.location_id', '=', 'locations.id')
-            ->join('categories', 'houses.category_id', '=', 'categories.id')
-            ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
-            ->select(
-                'houses.id',
-                'houses.name',
-                'houses.price',
-                'locations.name as location_name',
-                'categories.name as category_name',
-                'landlords.name as landlord_name',
-            )
-            ->paginate(20);
-//        if (Auth::user()->isAdmin()) {
-//            $houses = DB::table('houses')
-//                ->join('locations', 'houses.location_id', '=', 'locations.id')
-//                ->join('categories', 'houses.category_id', '=', 'categories.id')
-//                ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
-//                ->select(
-//                    'houses.id',
-//                    'houses.name',
-//                    'houses.price',
-//                    'locations.name as location_name',
-//                    'categories.name as category_name',
-//                    'landlords.name as landlord_name',
-//                )
-//                ->paginate(20);
-//        } else {
-//            $houses = DB::table('houses')
-//                ->join('locations', 'houses.location_id', '=', 'locations.id')
-//                ->join('categories', 'houses.category_id', '=', 'categories.id')
-//                ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
-//                ->where('')
-//                ->select(
-//                    'houses.id',
-//                    'houses.name',
-//                    'houses.price',
-//                    'locations.name as location_name',
-//                    'categories.name as category_name',
-//                    'landlords.name as landlord_name',
-//                )
-//                ->paginate(20);
-//        }
+        $houses = House::with('landlord','category', 'location')->paginate(20);
         return view('house.index', compact('houses'));
     }
 
@@ -120,26 +79,27 @@ class HouseController extends Controller
         $houses = DB::table('houses')
             ->join('locations', 'houses.location_id', '=', 'locations.id')
             ->join('categories', 'houses.category_id', '=', 'categories.id')
-            ->join('landlords', 'houses.landlord_id', '=', 'landlords.id')
             ->select(
                 'houses.id',
                 'houses.name',
                 'houses.price',
+                'houses.landlord_id',
                 'locations.name as location_name',
                 'categories.name as category_name',
-                'landlords.name as landlords_name',
-                'landlords.phone as landlords_phone',
-                'landlords.email as landlords_email',
             )
             ->where('houses.id', '=', $id)
-            ->get();
-
+            ->first();
+        $landlord = DB::table('landlords')
+            ->join('users', 'landlords.user_id', '=', 'users.id')
+            ->where('landlords.id', '=', $houses->landlord_id)
+            ->select('landlords.phone', 'users.name', 'users.email')
+            ->first();
         $utilities = DB::table('utilities')
             ->join('houses_utilities', 'utilities.id', '=', 'houses_utilities.utility_id')
             ->where('houses_utilities.house_id', '=', $id)
             ->select('utilities.name')
             ->get();
-        return view('house.show', compact('houses', 'utilities'));
+        return view('house.show', compact('houses', 'utilities','landlord'));
     }
 
     /**
