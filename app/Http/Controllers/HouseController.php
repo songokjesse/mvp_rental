@@ -8,7 +8,10 @@ use App\Models\Landlord;
 use App\Models\Location;
 use App\Models\Utility;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,16 +21,20 @@ class HouseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $houses = House::with('landlord','category', 'location')->paginate(20);
+        if (Auth::user()->isAdmin) {
+            $houses = House::with('landlord','category', 'location')->paginate(20);
+        } else {
+            $houses = House::where('landlord_id', Auth::user()->landlord->id)->with('landlord','category', 'location')->paginate(20);
+        }
         return view('house.index', compact('houses'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $landlords = Landlord::all();
         $categories = Categories::all();
@@ -39,7 +46,7 @@ class HouseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
        $request->validate([
            'name' => 'required',
@@ -74,7 +81,7 @@ class HouseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $houses = DB::table('houses')
             ->join('locations', 'houses.location_id', '=', 'locations.id')
@@ -105,7 +112,7 @@ class HouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(House $house)
+    public function edit(House $house): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $locations = Location::all();
         $categories = Categories::all();
