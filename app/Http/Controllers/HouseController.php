@@ -175,7 +175,6 @@ class HouseController extends Controller
         $utilities = $request->input('utilities', []);
         $house->utilities()->sync($utilities);
 
-
         return redirect()->route('houses.show', $house->id);
     }
 
