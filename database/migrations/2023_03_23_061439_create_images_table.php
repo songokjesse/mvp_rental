@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('house_id');
+            $table->boolean('is_primary')->default(false);
             $table->foreign('house_id')->references('id')->on('houses');
             $table->timestamps();
         });
