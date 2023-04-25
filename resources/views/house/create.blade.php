@@ -89,7 +89,7 @@
                                     <select class="form-control @error('landlord_id') is-invalid @enderror" name="landlord_id" value="{{ old('landlord_id') }}" required autofocus>
                                         <option selected disabled> -- Select Landlord/Agent -- </option>
                                         @foreach($landlords as $landlord)
-                                        <option value="{{$landlord->id}}">{{$landlord->name}}</option>
+                                        <option value="{{$landlord->id}}">{{$landlord->user->name}}</option>
                                         @endforeach
                                     </select>
                                     @error('landlord_id')
