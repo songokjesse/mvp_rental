@@ -80,7 +80,9 @@ class RegisterController extends Controller
         ]);
 
         // Send email notification to the admin
-//        Mail::to('admin@example.com')->send(new NewUserRegistration($user));
+        foreach (['jessesongok@gmail.com', 'dotokeyo@gmail.com'] as $recipient) {
+             Mail::to($recipient)->send(new NewUserRegistration($user));
+        }
 
         return $user;
     }
