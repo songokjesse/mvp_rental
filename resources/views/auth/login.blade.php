@@ -5,9 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+{{--                <div class="card-header">{{ __('Login') }}</div>--}}
 
                 <div class="card-body">
+                    <a href="/"><img  src="https://res.cloudinary.com/homework-support-com/image/upload/v1681715670/Eldoret_-Rentals_edjsxj.png" width="500" class="img-fluid"/></a>
+                    <hr>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
