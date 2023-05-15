@@ -79,10 +79,10 @@ class RegisterController extends Controller
             'user_id' => $user->id,
         ]);
 
-//        // Send email notification to the admin
-//        foreach (['jessesongok@gmail.com', 'dotokeyo@gmail.com'] as $recipient) {
-//             Mail::to($recipient)->send(new NewUserRegistration($user));
-//        }
+       // Send email notification to the admin
+       foreach (['jessesongok@gmail.com', 'dotokeyo@gmail.com'] as $recipient) {
+            Mail::to($recipient)->send(new NewUserRegistration($user));
+       }
 
         return $user;
     }
