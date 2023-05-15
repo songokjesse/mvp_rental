@@ -5,7 +5,9 @@
 <ul>
     <li>Name: {{ $user->name }}</li>
     <li>Email: {{ $user->email }}</li>
-    <li>Registration date: {{ $user->created_at->format('Y-m-d H:i:s') }}</li>
+    <li>Registration date: {{Carbon\Carbon::createFromTimestamp($user->created_at)->toDateTimeString()}}
+    {{-- {{ $user->created_at->format('Y-m-d H:i:s') }} --}}
+    </li>
 </ul>
 
 <p>Please log in to the admin panel and approve or reject the user's request.</p>
