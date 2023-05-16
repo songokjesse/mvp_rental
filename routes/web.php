@@ -43,3 +43,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/house_details/{id}', [HouseDetailController::class, 'show'])->name('house_details');
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
