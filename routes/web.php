@@ -45,4 +45,4 @@ Route::get('/house_details/{id}', [HouseDetailController::class, 'show'])->name(
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+})->middleware('auth')->name('verification.verify');
