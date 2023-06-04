@@ -24,8 +24,9 @@ class HouseUploadImage extends Component
         $validatedData = $this->validate([
             'photo' => 'image|max:1024|mimes:jpeg,png,jpg', // 1MB Max
         ]);
+         $validatedData['photo']->storeAs('public/uploads', $this->photo->getClientOriginalName());
+         $filename = 'uploads/'.$this->photo->getClientOriginalName();
 
-        $filename =  $validatedData['photo']->store('uploads', 'public');
          $upload_images = new Image();
          $upload_images->name = $filename;
          $upload_images->house_id = $this->house_id;
